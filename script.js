@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => {
         card.classList.remove("hidden");
         card.classList.add("visible");
-      }, index * 200); // تأخير تدريجي لكل كرت
+      }, index * 300); // تأخير تدريجي لكل كرت
     });
   });
   
