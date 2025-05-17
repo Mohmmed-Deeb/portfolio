@@ -6,6 +6,7 @@ body {
     color: #fff;
     direction: rtl;
     text-align: center;
+    scroll-behavior: smooth;
   }
   
   header {
