@@ -117,3 +117,39 @@ document.addEventListener("DOMContentLoaded", () => {
   updateDateTime();
   setInterval(updateDateTime, 60000); // يحدث كل دقيقة
 });
+
+function updateDateTime() {
+  const now = new Date();
+
+  // التاريخ
+  const options = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  };
+  const dateString = now.toLocaleDateString('ar-EG', options);
+
+  // الوقت
+  const hours = now.getHours().toString().padStart(2, '0');
+  const minutes = now.getMinutes().toString().padStart(2, '0');
+  const timeString = `${hours}:${minutes}`;
+
+  // عرض التاريخ
+  const dateElement = document.getElementById('today-date');
+  if (dateElement) {
+    dateElement.textContent = dateString;
+  }
+
+  // عرض الساعة الرقمية
+  const clockElement = document.getElementById('digital-clock');
+  if (clockElement) {
+    clockElement.textContent = timeString;
+  }
+}
+
+// تشغيلها عند تحميل الصفحة
+document.addEventListener("DOMContentLoaded", () => {
+  updateDateTime();
+  setInterval(updateDateTime, 60000); // تحديث كل دقيقة
+});

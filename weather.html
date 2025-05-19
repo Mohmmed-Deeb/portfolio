@@ -13,12 +13,14 @@
   <nav>
     <a href="index.html">الرئيسية</a>
   </nav>
-
-  <div class="weather-container">
-    <h1>تطبيق الطقس</h1>
-    <div id="date-icon">
-  📅 <span id="today-date"></span>
+ <div class="date-time-container">
+    <div class="calendar">
+        📅 <span id="today-date"></span>
     </div>
+    <div class="clock">
+        ⏰ <span id="digital-clock"></span>
+    </div>
+</div>
 
     <input type="text" id="city-input" placeholder="ادخل اسم المدينة" />
     <button onclick="fetchWeather()">عرض الطقس</button>
