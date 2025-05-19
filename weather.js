@@ -101,8 +101,8 @@ function updateDateTime() {
     minute: '2-digit',
     hour12: false
   };
-  const dateString = now.toLocaleDateString('ar-EG', options);
-  const timeString = now.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit', hour12: false });
+  const dateString = now.toLocaleDateString('EG', options);
+  const timeString = now.toLocaleTimeString('EG', { hour: '2-digit', minute: '2-digit', hour12: false });
 
   const fullString = `${dateString} - 🕒 ${timeString}`;
 
