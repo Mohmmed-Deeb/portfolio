@@ -26,7 +26,7 @@
 // }
 
 
-const apiKey = '87f0f704d59de0464ec36d9eb088080f'; // استبدل بـ API Key الخاص بك
+const apiKey = "API_KEY=87f0f704d59de0464ec36d9eb088080f"; // استبدل بـ API Key الخاص بك
 
 function fetchWeather() {
   const city = document.getElementById('city-input').value.trim();
