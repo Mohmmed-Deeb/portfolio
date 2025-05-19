@@ -1,4 +1,4 @@
-/* 
+/* /* 
 /* خاص بملف الطقس  */
 body {
   margin: 0;
@@ -78,4 +78,46 @@ button {
 
 button:hover {
   background-color: #0097a7;
-}
+} */
+
+
+
+
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f0f8ff;
+      background-size: cover;
+      background-position: center;
+      transition: background-image 0.5s ease-in-out;
+    }
+    nav {
+      margin: 20px;
+    }
+    .weather-container {
+      background-color: rgba(150, 243, 43, 0.9);
+      padding: 30px;
+      margin: 50px auto;
+      width: 90%;
+      max-width: 500px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #weatherResult img {
+      width: 80px;
+    }
