@@ -121,3 +121,9 @@ button:hover {
     #weatherResult img {
       width: 80px;
     }
+
+    #date-icon {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #555;
+}

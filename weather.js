@@ -87,3 +87,14 @@ function playSound(condition, isDayTime) {
     }
   }
 }
+
+
+// دالة لعرض التاريخ بشكل تلقائي
+function updateDate() {
+  const now = new Date();
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  const dateString = now.toLocaleDateString('ar-EG', options);
+  document.getElementById('today-date').textContent = dateString;
+}
+
+document.addEventListener("DOMContentLoaded", updateDate);
