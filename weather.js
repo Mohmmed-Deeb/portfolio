@@ -12,7 +12,7 @@ function fetchWeather() {
       const iconCode = data.weather[0].icon;
       const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
 
-      document.getElementById('weather-info').innerHTML = `
+      document.getElementById('weatherResult').innerHTML = `
         <img src="${iconUrl}" alt="Weather icon" />
         <p>☁️ <strong>الحالة:</strong> ${data.weather[0].description}</p>
         <p>🌡️ <strong>الحرارة:</strong> ${data.main.temp}°C</p>
