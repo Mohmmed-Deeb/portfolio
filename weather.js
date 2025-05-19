@@ -85,3 +85,5 @@ function playSound(condition, isDayTime) {
     }
   }
 }
+
+document.getElementById('weather-btn').addEventListener('click', fetchWeather);
