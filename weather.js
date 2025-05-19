@@ -90,11 +90,30 @@ function playSound(condition, isDayTime) {
 
 
 // دالة لعرض التاريخ بشكل تلقائي
-function updateDate() {
+function updateDateTime() {
   const now = new Date();
-  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  const options = {
+    weekday: 'long', // الجمعة
+    year: 'numeric',
+    month: 'long',   // مايو
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false
+  };
   const dateString = now.toLocaleDateString('ar-EG', options);
-  document.getElementById('today-date').textContent = dateString;
+  const timeString = now.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit', hour12: false });
+
+  const fullString = `${dateString} - 🕒 ${timeString}`;
+
+  const dateElement = document.getElementById('today-date');
+  if (dateElement) {
+    dateElement.textContent = fullString;
+  }
 }
 
-document.addEventListener("DOMContentLoaded", updateDate);
+// استدعاء الدالة عند تحميل الصفحة + تحديث كل دقيقة
+document.addEventListener("DOMContentLoaded", () => {
+  updateDateTime();
+  setInterval(updateDateTime, 60000); // يحدث كل دقيقة
+});
