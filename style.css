@@ -209,28 +209,40 @@ nav a:hover {
 }
 
 /* تنسيق الصورة في الرئيسية */
+
 .profile-pic {
   width: 150px;
   height: 150px;
   border-radius: 50%;
   border: 4px solid #fff;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  animation: slowRotate 20s linear infinite;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  display: block;
+  background-image: url('11.jpg');
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: swing 3s ease-in-out infinite;
+  transition: background-size 0.3s ease, box-shadow 0.3s ease;
   margin: 0 auto 15px auto;
 }
 
+
 .profile-pic:hover {
-  transform: scale(1.05) rotate(5deg);
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+   animation: none;
+  background-size: 130%; /* تعمق داخل الصورة */
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+  cursor: grab;
+  border: 5px solid #d1f07d;
+
+
+  
 }
 
-@keyframes slowRotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+
+
+@keyframes swing {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(10deg); }
+  50% { transform: rotate(0deg); }
+  /* 75% { transform: rotate(-10deg); } */
+  100% { transform: rotate(0deg); }
 }

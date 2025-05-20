@@ -125,8 +125,8 @@ function updateDateTime() {
   const options = {
     weekday: 'long',
     year: 'numeric',
-    month: 'long',
-    day: 'numeric'
+    day: 'numeric',
+    month: 'long'
   };
   const dateString = now.toLocaleDateString('en-US', options);
 
