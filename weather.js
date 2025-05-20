@@ -102,7 +102,7 @@ function updateDateTime() {
     hour12: false
   };
   const dateString = now.toLocaleDateString('en-US', options);
-  const timeString = now.toLocaleTimeString('EG', { hour: '2-digit', minute: '2-digit', hour12: false });
+  const timeString = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false });
 
   const fullString = `${dateString} - 🕒 ${timeString}`;
 
