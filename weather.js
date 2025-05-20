@@ -128,7 +128,7 @@ function updateDateTime() {
     month: 'long',
     day: 'numeric'
   };
-  const dateString = now.toLocaleDateString('ar-EG', options);
+  const dateString = now.toLocaleDateString('EG', options);
 
   // الوقت
   const hours = now.getHours().toString().padStart(2, '0');
