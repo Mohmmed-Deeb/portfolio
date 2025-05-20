@@ -207,3 +207,30 @@ nav a {
 nav a:hover {
   color: #4dd0e1;
 }
+
+/* تنسيق الصورة في الرئيسية */
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  animation: slowRotate 20s linear infinite;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  display: block;
+  margin: 0 auto 15px auto;
+}
+
+.profile-pic:hover {
+  transform: scale(1.05) rotate(5deg);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes slowRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
