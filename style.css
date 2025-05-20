@@ -1,7 +1,8 @@
 /* الخطوط العامة */
 body {
     margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     font-family: 'Cairo', sans-serif;
+    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
     background-color: #121212;
     color: #fff;
     direction: rtl;
@@ -221,7 +222,7 @@ nav a:hover {
   background-position: center;
   background-repeat: no-repeat;
   animation: swing 3s ease-in-out infinite;
-  transition: background-size 0.3s ease, box-shadow 0.3s ease;
+  transition: 0.5s ease-in-out;
   margin: 0 auto 15px auto;
 }
 
