@@ -150,3 +150,35 @@ button:hover {
   align-items: center;
   gap: 5px;
 }
+
+/* تنسيق لزر الصفحة الرئيسية */
+
+.home-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  color: #2c2752;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.home-link i {
+  transition: transform 0.3s ease;
+}
+
+.home-link:hover {
+  background-color: #181c05;
+  color: #007BFF;
+}
+
+.home-link:hover i {
+  transform: rotate(-10deg) scale(1.2);
+}
+
+.home-link:active {
+  transform: scale(0.95);
+}
+

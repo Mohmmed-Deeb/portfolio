@@ -1,0 +1,540 @@
+body {
+  /* font-family: 'Cairo', sans-serif; */
+  font-family: 'Tajawal', sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 20px;
+  direction: rtl;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 28px;
+  color: #333;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+button, input[type="file"] {
+  padding: 10px 20px;
+  border: none;
+  background-color: #2e86de;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #1e6ebd;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th, td {
+  padding: 8px;
+  border: 1px solid #ccc;
+  text-align: center;
+  font-size: 14px;
+}
+
+.signature {
+  text-align: left;
+  font-weight: bold;
+  padding: 10px;
+  background-color: #e6f2ff;
+  border-radius: 8px;
+  margin-top: 30px;
+}
+
+/* Modal */
+/* نافذة التعبئة اليدوية (المودال) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 30px 20px 20px 20px;
+  border: 1px solid #888;
+  width: 90%;
+  max-width: 700px;
+  border-radius: 10px;
+  position: relative;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  animation: slideIn 0.3s ease;
+}
+
+/* زر الإغلاق */
+.close {
+  position: absolute;
+  top: 0px;
+  right: 13px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.close:hover {
+  color: #e74c3c;
+}
+
+
+.form-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
+  margin-top: 10px;
+}
+
+input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+
+/* تصدير الملفات  */
+
+.buttons button {
+  background-color: #27ae60;
+}
+.buttons button:hover {
+  background-color: #1e8449;
+}
+
+/* زر رفع الملفات  */
+.upload-btn {
+  display: inline-block;
+  padding: 10px 25px;
+  background-color: #2ecc71; /* أخضر ناعم */
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  font-family: 'Cairo', sans-serif;
+}
+
+.upload-btn:hover {
+  background-color: #27ae60;
+  transform: translateY(-2px);
+}
+
+
+/* تصميم زر الادخال */
+.custom-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #3498db; /* أزرق ناعم */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  font-family: 'Cairo', sans-serif;
+}
+
+.custom-button:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+}
+
+
+
+
+.save-btn:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+}
+
+
+
+/* زر البحث */
+
+.search-btn {
+  background-color: #00a8e8;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: 'Tajawal', sans-serif;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.search-btn:hover {
+  background-color: #0077b6;
+  transform: scale(1.05);
+}
+
+.search-btn:active {
+  background-color: #005f8e;
+  transform: scale(0.98);
+}
+
+.custom-button,
+.upload-btn,
+.delete-all-btn,
+.search-btn {
+  background-color: #00a8e8;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  margin: 5px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-family: 'Tajawal', sans-serif;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* زر اعتماد البيانات */
+.save-btn {
+  display: none;
+  padding: 10px 25px;
+  background-color: #3498db; /* أزرق أنيق */
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  font-family: 'Cairo', sans-serif;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  text-decoration: none;
+}
+.custom-button:hover,
+.upload-btn:hover,
+.save-btn:hover,
+.delete-all-btn:hover,
+.search-btn:hover {
+  background-color: #0077b6;
+  transform: scale(1.05);
+}
+
+.custom-button:active,
+.upload-btn:active,
+.save-btn:active,
+.delete-all-btn:active,
+.search-btn:active {
+  background-color: #005f8e;
+  transform: scale(0.98);
+}
+
+
+/* جدول ومودل البحث  */
+
+#searchModal .modal-content {
+  background: linear-gradient(to bottom right, #ffffff, #e0f7fa);
+  border: 2px solid #00bcd4;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  padding: 20px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+#searchModal h2 {
+  color: #00796b;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+#searchResultsTable th {
+  background-color: #0097a7;
+  color: white;
+}
+
+#searchResultsTable tr:nth-child(even) {
+  background-color: #e0f2f1;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+#searchResultsTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 16px;
+}
+
+#searchResultsTable th,
+#searchResultsTable td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+#searchResultsTable tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#searchResultsTable tr:hover {
+  background-color: #f1f1f1;
+}
+
+#searchResultsTable th {
+  background-color: #2a6aaa;
+  color: white;
+  font-weight: bold;
+}
+
+#searchModal .modal-content {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  border: 2px solid #3498db;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+/* تلوين الجدول  */
+
+/* تنسيق عام للجدول */
+#dataTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* رأس الجدول */
+#dataTable thead tr {
+  background-color: #424ab8;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* خلايا  الجدول */
+#dataTable thead th {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+/* صفوف البيانات */
+#dataTable tbody tr {
+  background-color: #f9f9f9;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+/* عند المرور على الصف */
+#dataTable tbody tr:hover {
+  background-color: #e0f7fa;
+}
+
+/* خلايا الجسم */
+#dataTable tbody td {
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+/* خلية زر الحذف */
+#dataTable tbody td:last-child {
+  background-color: #ffebee;
+  color: #c62828;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* تكبير عرض العمود الأول "مسلسل" قليلاً */
+#dataTable tbody td:first-child {
+  width: 50px;
+}
+
+/* ازر اليدوي وتنسيقاته */
+
+
+/* تصميم الزر العام */
+.custom-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(76, 175, 80, 0.2);
+}
+
+.custom-button:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+}
+
+/* تغطية المودال */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+}
+
+/* محتوى المودال */
+.modal-content {
+  background: linear-gradient(145deg, #ffffff, #f1f1f1);
+  margin: 4% auto;
+  padding: 20px 25px;
+  border-radius: 15px;
+  width: 85%;
+  max-width: 600px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow-y: auto;
+  max-height: 85vh;
+}
+
+/* زر الإغلاق */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #888;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.close:hover {
+  color: #333;
+  transform: scale(1.2);
+}
+
+/* الحقول داخل النموذج */
+.modal-content label {
+  display: block;
+  font-weight: bold;
+  color: #333;
+  margin-top: 10px;
+  font-size: 15px;
+}
+
+.modal-content input {
+  width: 95%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border 0.3s ease;
+}
+
+.modal-content input:focus {
+  border-color: #4CAF50;
+  outline: none;
+  background-color: #f9fff9;
+}
+
+/* منطقة التمرير */
+.form-scroll {
+  max-height: 65vh;
+  overflow-y: auto;
+  padding-right: 8px;
+  margin-bottom: 15px;
+  scrollbar-width: thin;
+  scrollbar-color: #4CAF50 #f1f1f1;
+}
+
+.form-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.form-scroll::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 8px;
+}
+
+.form-scroll::-webkit-scrollbar-thumb {
+  background-color: #4CAF50;
+  border-radius: 8px;
+}
+
+/* أزرار إضافية */
+.upload-btn,
+.save-btn,
+.search-btn,
+.delete-all-btn {
+  background-color: #3498db;
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  margin: 8px 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.upload-btn:hover,
+.save-btn:hover,
+.search-btn:hover,
+.delete-all-btn:hover {
+  background-color: #2d7fbf;
+  transform: scale(1.05);
+}
+
+/* تنسيق حقل البحث */
+#searchInput {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-top: 8px;
+  transition: border 0.3s ease;
+}
+
+#searchInput:focus {
+  border-color: #3498db;
+  outline: none;
+  background-color: #f0faff;
+}

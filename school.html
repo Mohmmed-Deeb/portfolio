@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <title>نموذج الإحصاء المدرسي</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="school.css" />
+  <script src="https://unpkg.com/pdf-font-arabic@1.0.0/amiri-font.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://unpkg.com/jspdf-arabic/dist/jspdf-arabic.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+
+
+</head>
+<body>
+  <header>
+    <h1>نموذج الإحصاء المدرسي</h1>
+  </header>
+  <!-- زر الادخال اليديوي -->
+
+<div class="buttons">
+   <!-- زر فتح النموذج -->
+<button id="openModalBtn" class="custom-button">إدخال يدوي</button>
+
+<!-- نافذة المودال -->
+<div id="manualModal" class="modal">
+  <div class="modal-content">
+    <span id="closeModal" class="close">&times;</span>
+      <form id="manualForm">
+          <div class="form-scroll"> <!-- ✅ هذا الجزء الجديد -->
+            <label>الاسم</label><input type="text" name="studentName" required />
+            <label>رقم الهوية</label><input type="text" name="id" required />
+            <label>رقم الجوال</label><input type="text" name="phone" required />
+            <label>اسم الشريك</label><input type="text" name="guardianName" required />
+            <label>رقم هوية الشريك</label><input type="text" name="guardianId" required />
+            <label>عدد الأفراد</label><input type="number" name="familyCount" required />
+            <label>عدد الذكور</label><input type="number" name="males" required />
+            <label>عدد الإناث</label><input type="number" name="females" required />
+            <label>ذكر < 5</label><input type="number" name="mUnder5" required />
+            <label>أنثى < 5</label><input type="number" name="fUnder5" required />
+            <label>ذكر 6-17</label><input type="number" name="m6to17" required />
+            <label>أنثى 6-17</label><input type="number" name="f6to17" required />
+            <label>إعاقات</label><input type="text" name="disabilities" />
+            <label>مزمن</label><input type="text" name="disabilities" />
+            <label>الحالة الصحية</label><input type="text" name="disabilities" />
+            <label>الحالة الاجتماعية</label><input type="text" name="disabilities" />
+            <label>مكان السكن</label><input type="text" name="residence" required />
+            <label>المندوب</label><input type="text" name="delegate" />
+            <label>الوظيفة</label><input type="text" name="job" />
+            <label>الشعبة</label><input type="text" name="class" />
+          </div>                        <!-- 🔚 نهاية div scroll -->
+
+        <button type="submit" class="custom-button">حفظ البيانات</button>
+      </form>
+  </div>
+</div>
+  <label for="excelUpload" class="upload-btn">📁 رفع ملف إكسل</label>
+  <input type="file" id="excelUpload" accept=".xlsx, .xls" style="display: none" />
+  <button id="saveDataBtn" class="save-btn">💾 اعتماد البيانات</button>
+  <button onclick="exportToExcel()">تصدير Excel</button>
+  <button onclick="exportToPDF()">تصدير PDF</button>
+  <button onclick="clearAllData()" class="delete-all-btn">🗑️ حذف كل البيانات</button>
+</div>
+<div style="margin-bottom: 10px;">
+<button id="openSearchModalBtn" class="search-btn">🔍 بحث </button>
+  <input type="text" id="searchInput" placeholder="ادخل الاسم أو رقم الهوية للبحث" style="width: 100%; padding: 8px; font-size: 16px;" />
+</div>
+<!-- مودال البحث -->
+<div id="searchModal" class="modal" style="display:none;">
+  <div class="modal-content" style="max-width: 800px;">
+    <span class="close" id="closeSearchModal">&times;</span>
+    <h2>نتائج البحث</h2>
+    <table id="searchResultsTable" style="width: 100%; border-collapse: collapse;">
+      <thead>
+        <tr>
+          <th>المسلسل</th>
+          <th>الترقيم</th>
+          <th>الاسم</th>
+          <th>رقم الهوية</th>
+          <th>رقم الجوال</th>
+          <th>اسم الشريك </th>
+          <th> الحالة الاجتماعية </th>
+          <th>المندوب</th>
+          <th>الوظيفة</th>
+          <th>الشعبة</th>
+          <!-- يمكنك إضافة باقي الأعمدة حسب الحاجة -->
+        </tr>
+      </thead>
+      <tbody>
+        <!-- نتائج البحث تظهر هنا -->
+      </tbody>
+    </table>
+    <button onclick="printSearchResults()" style="margin: 10px; background: #2ecc71; color: white; padding: 8px 16px; border: none; border-radius: 5px;">🖨️ طباعة النتائج</button>
+
+  </div>
+</div>
+
+  <table id="dataTable">
+    <thead>
+      <tr>
+        <th>مسلسل</th>
+        <th>الاسم</th>
+        <th>رقم الهوية</th>
+        <th>رقم الجوال</th>
+        <th>اسم الشريك</th>
+        <th>هوية الشريك</th>
+        <th>عدد الأفراد</th>
+        <th>عدد الذكور</th>
+        <th>عدد الإناث</th>
+        <th>ذكر < 5</th>
+        <th>أنثى < 5</th>
+        <th>ذكر 6-17</th>
+        <th>أنثى 6-17</th>
+        <th>إعاقات</th>
+        <th>مزمن</th>
+        <th>الحالة الصحية</th>
+        <th>الحالة الاجتماعية</th>
+        <th>مكان السكن</th>
+        <th>المندوب</th>
+        <th>الوظيفة</th>
+        <th>الشعبة</th>
+        <th>الحذف</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <div class="signature">
+    توقيع المدير: <strong>أبو الطارق</strong>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <form id="manualForm">
+        <div class="form-group">
+          <label>ذكر < 5</label><input type="number" name="mUnder5" required />
+          <label>أنثى < 5</label><input type="number" name="fUnder5" required />
+          <label>ذكر 6-17</label><input type="number" name="m6to17" required />
+          <label>أنثى 6-17</label><input type="number" name="f6to17" required />
+          <label>اسم الطالب</label><input type="text" name="studentName" required />
+          <label>رقم الهوية</label><input type="text" name="id" required />
+          <label>رقم الجوال</label><input type="text" name="phone" required />
+          <label>اسم ولي الأمر</label><input type="text" name="guardianName" required />
+          <label>رقم هوية ولي الأمر</label><input type="text" name="guardianId" required />
+          <label>عدد الأفراد</label><input type="number" name="familyCount" required />
+          <label>عدد الذكور</label><input type="number" name="males" required />
+          <label>عدد الإناث</label><input type="number" name="females" required />
+          <label>أطفال < سنتين</label><input type="number" name="under2" required />
+          <label>إعاقات</label><input type="text" name="disabilities" />
+          <label>مكان السكن</label><input type="text" name="residence" required />
+          <label>المندوب</label><input type="text" name="delegate" />
+          <label>الوظيفة</label><input type="text" name="job" />
+          <label>الشعبة</label><input type="text" name="class" />
+        </div>
+        <button type="submit">إضافة</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

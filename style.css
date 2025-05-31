@@ -1,7 +1,9 @@
 /* الخطوط العامة */
 body {
     margin: 0;
-     font-family: 'Cairo', sans-serif;
+     /* font-family: 'Cairo', sans-serif; */
+     /* font-family: 'Nunito', sans-serif; */
+     font-family: 'Tajawal', sans-serif;
     /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
     background-color: #121212;
     color: #fff;
@@ -232,18 +234,44 @@ nav a:hover {
   background-size: 130%; /* تعمق داخل الصورة */
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
   cursor: grab;
-  border: 5px solid #d1f07d;
-
-
-  
+  border: 5px solid #d1f07d;  
 }
-
-
-
 @keyframes swing {
   0% { transform: rotate(0deg); }
   25% { transform: rotate(10deg); }
   50% { transform: rotate(0deg); }
   /* 75% { transform: rotate(-10deg); } */
   100% { transform: rotate(0deg); }
+}
+
+
+/* تنسيق لزر الصفحة الرئيسية */
+
+.home-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  color: #2c2752;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.home-link i {
+  transition: transform 0.3s ease;
+}
+
+.home-link:hover {
+  background-color: #181c05;
+  color: #007BFF;
+}
+
+.home-link:hover i {
+  transform: rotate(-10deg) scale(1.2);
+}
+
+.home-link:active {
+  transform: scale(0.95);
 }
