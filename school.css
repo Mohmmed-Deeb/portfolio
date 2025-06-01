@@ -24,7 +24,7 @@ h1 {
   margin-bottom: 20px;
 }
 
-button, input[type="file"] {
+ button, input[type="file"] {
   padding: 10px 20px;
   border: none;
   background-color: #2e86de;
@@ -33,6 +33,7 @@ button, input[type="file"] {
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
+
 
 button:hover {
   background-color: #1e6ebd;
@@ -126,6 +127,9 @@ input {
   background-color: #1e8449;
 }
 
+
+
+
 /* زر رفع الملفات  */
 .upload-btn {
   display: inline-block;
@@ -164,9 +168,6 @@ input {
   background-color: #2980b9;
   transform: translateY(-2px);
 }
-
-
-
 
 .save-btn:hover {
   background-color: #2980b9;
@@ -221,6 +222,45 @@ input {
   display: inline-block;
   text-align: center;
   text-decoration: none;
+}
+
+/* انيميشن في توقيع التقرير  */
+.admin-signature {
+  margin-top: 30px;
+  text-align: left;
+  display: inline-block;
+  background-color: #003366;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  border: 2px solid #001f33;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1.2s ease forwards;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  cursor: grab;
+}
+
+.admin-signature:hover {
+  box-shadow: 0 0 12px #0055aa;
+  transform: scale(1.03);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.signature-name {
+  font-family: 'Great Vibes', cursive;
+  font-size: 28px;
+  color: #ffffff;
+  margin-right: 10px;
 }
 
 /* زر اعتماد البيانات */

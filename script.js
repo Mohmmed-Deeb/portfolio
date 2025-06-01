@@ -243,6 +243,37 @@ function exportToExcel() {
   XLSX.writeFile(wb, "school_data.xlsx");
 }
 
+// تصدير ملف إكسل مع توقيع المدير
+function exportToExcel() {
+  const wb = XLSX.utils.book_new();
+  const ws_data = [];
+
+  // استخراج رؤوس الأعمدة
+  const headers = Array.from(document.querySelectorAll("#dataTable thead th"))
+    .map((th) => th.textContent.trim());
+  ws_data.push(headers.slice(0, 21)); // بدون عمود الحذف
+
+  // استخراج بيانات الصفوف
+  const rows = document.querySelectorAll("#dataTable tbody tr");
+  rows.forEach((row) => {
+    const rowData = Array.from(row.children)
+      .slice(0, 21)
+      .map((cell) => cell.textContent.trim());
+    ws_data.push(rowData);
+  });
+
+  // إضافة صف فارغ للفصل
+  ws_data.push([]);
+
+  // إضافة توقيع المدير في نهاية الملف
+  ws_data.push([`توقيع المدير: أبو الطارق`]);
+
+  const ws = XLSX.utils.aoa_to_sheet(ws_data);
+  XLSX.utils.book_append_sheet(wb, ws, "البيانات");
+  XLSX.writeFile(wb, "school_data.xlsx");
+}
+
+
 // تصدير ملف PDF
 
 
@@ -353,9 +384,9 @@ document.getElementById("openSearchModalBtn").addEventListener("click", () => {
   const results = allData.filter(
     (row) =>
       (row[1] && row[1].toLowerCase().includes(query)) || // الاسم
-      (row[4] && row[4].toLowerCase().includes(query)) || // الاسم
+      (row[4] && row[4].toLowerCase().includes(query)) || // اسم الشريك
       (row[2] && row[2].toString().includes(query))   ||    // رقم الهوية
-      (row[3] && row[3].toString().includes(query))       // رقم الهوية
+      (row[3] && row[3].toString().includes(query))       // رقم الجوال
   );
 
   const tableBody = document.querySelector("#searchResultsTable tbody");
@@ -494,12 +525,51 @@ function printSearchResults() {
           th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
           th { background-color: #3498db; color: white; }
           tr:nth-child(even) { background-color: #f9f9f9; }
+
+          .admin-signature {
+            margin-top: 30px;
+            text-align: left;
+            display: inline-block;
+            background-color: #003366;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 16px;
+            border: 2px solid #001f33;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1.2s ease forwards;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            cursor: grab;
+          }
+
+          .admin-signature:hover {
+            box-shadow: 0 0 12px #0055aa;
+            transform: scale(1.03);
+          }
+
+          @keyframes fadeInUp {
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+
+          .signature-name {
+            font-family: 'Great Vibes', cursive;
+            font-size: 20px;
+            color: #ffffff;
+            margin-right: 10px;
+          }
         </style>
       </head>
       <body>
         <h2 style="text-align:center;">نتائج البحث</h2>
         ${content}
-        <p style="margin-top: 30px; text-align: left;">توقيع الإدارة: أبو الطارق</p>
+        <p class="admin-signature">توقيع الإدارة: <span class="signature-name">أبو الطارق</span></p>
+
         <script>
           window.onload = function () {
             window.print();
@@ -512,6 +582,7 @@ function printSearchResults() {
     </html>
   `);
 }
+
 
 // اخفاء زر اعتماد البيانات
 document.getElementById("approveButton").style.display = "none";

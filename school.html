@@ -12,8 +12,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://unpkg.com/jspdf-arabic/dist/jspdf-arabic.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
-
-
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
@@ -60,9 +59,13 @@
   <label for="excelUpload" class="upload-btn">📁 رفع ملف إكسل</label>
   <input type="file" id="excelUpload" accept=".xlsx, .xls" style="display: none" />
   <button id="saveDataBtn" class="save-btn">💾 اعتماد البيانات</button>
-  <button onclick="exportToExcel()">تصدير Excel</button>
-  <button onclick="exportToPDF()">تصدير PDF</button>
+  <button class="exop-btn" onclick="exportToExcel()">تصدير Excel</button>
+  <button class="exop-btn" onclick="exportToPDF()">تصدير PDF</button>
   <button onclick="clearAllData()" class="delete-all-btn">🗑️ حذف كل البيانات</button>
+</div>
+<div  class="modall">
+  <button class="exop-btn" onclick="exportToExcel()">تصدير Excel</button>
+  <button class="exop-btn" onclick="exportToPDF()">تصدير PDF</button>
 </div>
 <div style="margin-bottom: 10px;">
 <button id="openSearchModalBtn" class="search-btn">🔍 بحث </button>
